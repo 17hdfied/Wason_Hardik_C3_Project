@@ -2,7 +2,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -72,7 +74,9 @@ class RestaurantTest {
     @Test
     public void select_item_list_return_order_cost(){
         int Total_Cost;
-        List<Item> selectedItems = null;
-        Total_Cost = restaurant.getTotalCost(selectedItems);
+        createMockRestaurant();
+        List<String> selectedItemNames = Arrays.asList("Veg Pasta", "Veg Lasangne");
+        Total_Cost = restaurant.getTotalCost(selectedItemNames);
+        assertEquals(540, Total_Cost);
     }
 }
